@@ -1,15 +1,13 @@
-# Class Diagram Proyek 1b
-
-Diagram berikut menggambarkan class yang digunakan pada implementasi Python.
+# Class Diagram Proyek 1b — UIN Suska Riau
 
 ```mermaid
 classDiagram
     class TreeNode {
-        +id_pegawai
+        +id_node
         +nama
         +jabatan
         +children: List[TreeNode]
-        +__init__(id_pegawai, nama, jabatan)
+        +__init__(id_node, nama, jabatan)
         +__str__()
     }
 
@@ -23,17 +21,12 @@ classDiagram
         +postorder_traversal()
         +count_nodes()
         +height()
-        -_search_by_id(current, id_pegawai)
-        -_search_by_keyword(current, kata_kunci, hasil)
-        -_preorder(current, hasil)
-        -_inorder(current, hasil)
-        -_postorder(current, hasil)
-        -_count_nodes(current)
-        -_height(current)
+        +level_counts()
+        +max_children()
     }
 
     OrganizationTree "1" *-- "1" TreeNode : root
     TreeNode "1" *-- "0..*" TreeNode : children
 ```
 
-Keterangan: tanda `+` menunjukkan method/atribut publik dan tanda `-` menunjukkan bagian internal (helper/private) pada rancangan. Satu `OrganizationTree` memiliki satu root, sedangkan setiap `TreeNode` dapat memiliki nol atau lebih child.
+`TreeNode` menyimpan identitas dan hubungan anak. `OrganizationTree` mengelola Root, penambahan, pencarian, traversal, dan analisis ukuran Tree.
